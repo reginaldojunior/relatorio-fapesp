@@ -1,5 +1,6 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.acl.LastOwnerException;
 import java.util.List;
 import java.io.IOException;
@@ -32,7 +33,8 @@ public class ChannelServer {
         int IPB = IPS/5;
         int instancesSent = 0;
         // load all file to memory
-        List<String> lines = Files.readAllLines(Path.of(filename));
+        Path relative = Paths.get(filename);
+        List<String> lines = Files.readAllLines(relative);
         System.out.println("read " + lines.size() + " lines to memory from file " + filename + ".");
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         serverSocketChannel.configureBlocking(true);
