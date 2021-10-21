@@ -70,7 +70,8 @@ function X {
 }
 
 #Usage: $0 PATH 
-# X $1airlines.arff ARF 161 244 1046
+# dataset, algoritmo, taxa de instancias por segundo para produção, 10%, 50%, 90%
+X $1airlines.arff ARF 161 244 1046
 # X $1airlines.arff ARF 89 135 581
 # X $1airlines.arff ARF 17 27 116
 # X $1airlines.arff LBag 146 345 1429
