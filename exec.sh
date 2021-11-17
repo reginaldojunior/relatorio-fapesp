@@ -16,31 +16,30 @@ function Y {
     IDENT="chunk"
     echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-4-50"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 100 -c 4) -s (ArffFileStream -f $1) -c 50 -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-100-4-50" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-100-4-50
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-8-500"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-4-500"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 100 -c 4) -s (ArffFileStream -f $1) -c 500 -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-100-4-500" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-100-4-500
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-8-2000"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-4-2000"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 100 -c 4) -s (ArffFileStream -f $1) -c 2000 -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-100-4-2000" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-100-4-2000
 
     # ENSEMBLE SIZE 150
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${1##*.}-150-8-50"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${1##*.}-150-4-50"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 150 -c 4) -s (ArffFileStream -f $1) -c 50 -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-4-50" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-4-50
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-8-500"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-4-500"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 150 -c 4) -s (ArffFileStream -f $1) -c 500 -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-4-500" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-4-500
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-8-2000"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-4-2000"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 150 -c 4) -s (ArffFileStream -f $1) -c 2000 -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-4-2000" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-4-2000
   elif [[ ${2} == *"RUNPER"* ]]; then
     IDENT="interleaved"
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-8-1"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-4-1"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EITTTExperiments -l ($2 -s 100 -c 4) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-100-4-1" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-100-4-1
-    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-8-1"
+    echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-4-1"
     numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EITTTExperiments -l ($2 -s 150 -c 4) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-4-1" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-4-1
   else
     IDENT="interleaved"
     echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-100-1-1"
-    numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 100) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-100-1-1" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-100-1-1
+    numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EITTTExperiments -l ($2 -s 100) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-100-1-1" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-100-1-1
     echo "$RESULT_DIR/${IDENT}-${onlyname}-${2##*.}-150-1-1"
-    numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EvaluateInterleavedTestThenTrainChunks -l ($2 -s 150) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-1-1" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-1-1
-    echo "moa.DoTask \"EvaluateInterleavedTestThenTrainChunks -l ($2 -s 150) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-1-1\" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-1-1"
+    numactl --physcpubind=${CORES} java -Xshare:off -XX:+UseParallelGC -Xmx$Memory -cp $MOA_HOME/lib/:$MOA_HOME/lib/moa.jar moa.DoTask "EITTTExperiments -l ($2 -s 150) -s (ArffFileStream -f $1) -e (BasicClassificationPerformanceEvaluator -o -p -r -f) -i -1 -d $RESULT_DIR/dump-${onlyname}-${2##*.}-150-1-1" > ${RESULT_DIR}/term-${IDENT}-${onlyname}-${2##*.}-150-1-1
   fi
 
   echo ""
@@ -81,7 +80,10 @@ mkdir -p /home/reginaldojunior/Documentos/UFscar/experimentos/boosting/results/f
 # X $1airlines.arff OBagASHT first
 # X $1airlines.arff SRP first
 
+X $1elecNormNew.arff Oza first
 X $1airlines.arff Oza first
+X $1covtypeNorm.arff Oza first
+X $1GMSC.arff Oza first
 
 # X $1covtypeNorm.arff ARF first
 # X $1covtypeNorm.arff LBag first
